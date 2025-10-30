@@ -1,48 +1,62 @@
-.opportunity-detail-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
+.opportunity-detail-page {
+  padding: 20px;
 }
 
-.opportunity-detail-content {
+.opportunity-detail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.opportunity-main {
   flex: 2;
 }
 
 .opportunity-detail-aside {
   flex: 1;
-  min-width: 260px;
-  max-width: 340px;
-  border-left: 1px solid #e6e6e6;
-  padding-left: 2rem;
+  position: sticky;
+  top: 80px;
 }
 
 .aside-card {
-  background: #f9f9fb;
-  padding: 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-
-.aside-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.6rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .meta-row {
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  margin: 8px 0;
+  font-size: 14px;
 }
 
 .action-row {
-  margin-top: 1rem;
+  margin-top: 20px;
   text-align: center;
 }
 
 .btn-primary {
-  background: #2d8fdd;
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 6px;
+  background-color: #007bff;
   border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.description {
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
