@@ -113,7 +113,7 @@ export interface Report {
 @Component({
   selector: 'dashboard',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, OpportunitiesComponent, RouterLink, RouterLinkActive,OpportunityDetailComponent, OpportunityFormComponent],
+  imports: [CommonModule, HttpClientModule, FormsModule, OpportunitiesComponent,OpportunityDetailComponent, OpportunityFormComponent],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css']
 })
@@ -574,6 +574,30 @@ export class Dashboard implements OnInit {
       }
     });
   }
+  contact = { name: '', email: '', message: '' };
+
+submitContactForm() {
+  if (!this.contact.name || !this.contact.email || !this.contact.message) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
+  // Change URL to your backend endpoint
+  fetch('http://localhost:5000/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(this.contact)
+  })
+    .then(res => res.json())
+    .then(() => {
+      alert('Message sent successfully!');
+      this.contact = { name: '', email: '', message: '' };
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Error sending message.');
+    });
+}
 
   sendMessage() {
     if (!this.newMessage.trim() || !this.selectedConversation) return;

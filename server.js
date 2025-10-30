@@ -8,6 +8,8 @@ app.use(express.json()); // to parse JSON request bodies
 
 const PORT = process.env.PORT || 5000;
 const client = new MongoClient(process.env.MONGO_URI);
+const cors = require('cors');
+app.use(cors());
 
 // Connect to MongoDB once
 let db;

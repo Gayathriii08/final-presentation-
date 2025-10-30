@@ -4,11 +4,12 @@
     <span>WasteZero</span>
   </div>
 <nav class="nav-links">
-  <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">HOME</a>
-  <a routerLink="/about" routerLinkActive="active">ABOUT</a>
-  <a routerLink="/services" routerLinkActive="active">SERVICES</a>
+  <a (click)="setActive('about')" [class.active]="activeMenu === 'about'">ABOUT</a>
 
-  <a (click)="scrollTo('footer-contact')">CONTACT</a>
+  <a (click)="setActive('services')" [class.active]="activeMenu === 'services'">SERVICES</a>
+
+
+<a (click)="setActive('contact')" [class.active]="activeMenu === 'contact'">CONTACT</a>
 </nav>
 
 </header>
@@ -341,7 +342,7 @@
           Pickup History
         </button>
       </div>
-
+    
       <!-- Schedule New Pickup Tab -->
       <div *ngIf="activePickupTab === 'schedule'" class="schedule-form">
         <div class="form-section">
@@ -466,6 +467,91 @@
     <section *ngIf="activeMenu === 'impact'" [innerHTML]="pages[activeMenu]"></section>
     <section *ngIf="activeMenu === 'settings'" [innerHTML]="pages[activeMenu]"></section>
     <section *ngIf="activeMenu === 'support'" [innerHTML]="pages[activeMenu]"></section>
+    <!-- Services Section -->
+<section *ngIf="activeMenu === 'services'" class="services-section">
+  <div class="services-container">
+    <h1>Our Services</h1>
+    <p>
+      WasteZero offers a range of sustainability-driven services designed to make waste management
+      smarter, easier, and more impactful for communities and organizations.
+    </p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>🗑️ Waste Collection</h3>
+        <p>Schedule waste pickups and ensure proper recycling and disposal.</p>
+      </div>
+      <div class="service-card">
+        <h3>♻️ Recycling Assistance</h3>
+        <p>Learn how to separate and recycle materials effectively through our guided programs.</p>
+      </div>
+      <div class="service-card">
+        <h3>🌱 Community Drives</h3>
+        <p>Participate in clean-up events and awareness programs near you.</p>
+      </div>
+      <div class="service-card">
+        <h3>📊 Waste Analytics</h3>
+        <p>Track and analyze your waste contribution to measure your environmental impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact Section -->
+<section *ngIf="activeMenu === 'contact'" class="contact-section">
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+    <p>
+      Have questions, suggestions, or want to collaborate with WasteZero?  
+      We’d love to hear from you!
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📧 Email</h3>
+        <p>wastezero.support@gmail.com</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>📞 Phone</h3>
+        <p>+91 98765 43210</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>📍 Location</h3>
+        <p>Chennai, Tamil Nadu, India</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- About Section -->
+<section *ngIf="activeMenu === 'about'" class="about-section">
+  <div class="about-container">
+    <h1>About WasteZero</h1>
+    <p>
+      WasteZero is a community-driven waste management platform that connects individuals,
+      volunteers, and organizations to promote recycling and sustainability.
+      Our mission is to reduce waste, encourage eco-friendly habits, and support a cleaner planet.
+    </p>
+
+    <div class="about-values">
+      <div class="value-card">
+        <h3>♻️ Sustainability</h3>
+        <p>We promote responsible waste disposal and recycling practices.</p>
+      </div>
+      <div class="value-card">
+        <h3>🌍 Community</h3>
+        <p>Empowering local communities to work together for environmental change.</p>
+      </div>
+      <div class="value-card">
+        <h3>💡 Innovation</h3>
+        <p>Leveraging technology to simplify and enhance waste management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- Opportunities container (embedded components) -->
     <section *ngIf="activeMenu === 'opportunities'">
       <!-- List -->
