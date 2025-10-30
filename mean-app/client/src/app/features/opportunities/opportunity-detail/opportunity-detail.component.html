@@ -1,15 +1,29 @@
 <div class="opportunity-detail-container">
+
+  <!-- Main Left Content -->
   <div class="opportunity-detail-content">
     <h1>{{ opportunity.title }}</h1>
-    <p>{{ opportunity.description }}</p>
-    <p><strong>Category:</strong> {{ opportunity.category }}</p>
+
+    <div class="description-block">
+      <h3>Description</h3>
+      <p>{{ opportunity.description }}</p>
+    </div>
+
+    <div class="extra-info-block">
+      <p><strong>Category:</strong> {{ opportunity.category || 'N/A' }}</p>
+      <p><strong>Required Skills:</strong> {{ (opportunity.required_skills || []).join(', ') || 'N/A' }}</p>
+      <p><strong>Opportunity ID:</strong> {{ opportunity._id || opportunity.id || 'N/A' }}</p>
+      <p *ngIf="opportunity.organizer"><strong>Organizer:</strong> {{ opportunity.organizer }}</p>
+    </div>
 
     <app-confirm-modal></app-confirm-modal>
   </div>
 
+  <!-- Right Aside Info Card -->
   <aside class="opportunity-detail-aside">
     <div class="aside-card">
       <h3>Opportunity Info</h3>
+
       <div class="meta-row"><strong>Location:</strong> {{ opportunity.location || 'N/A' }}</div>
       <div class="meta-row"><strong>Date:</strong> {{ opportunity.date || 'N/A' }}</div>
       <div class="meta-row"><strong>Duration:</strong> {{ opportunity.duration || 'N/A' }}</div>
