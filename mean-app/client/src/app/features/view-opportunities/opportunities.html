@@ -3,13 +3,34 @@
   <p class="subtitle">Browse and join recycling and waste management initiatives</p>
 
   <div class="opportunity-actions">
-    <input type="text" [(ngModel)]="searchText" placeholder="Search opportunities...">
+    <input type="text" [(ngModel)]="searchText" placeholder="Search opportunities..." class="search-input">
   </div>
 
   <div *ngIf="filteredOpportunities.length > 0; else noData">
     <div *ngFor="let op of filteredOpportunities" class="opportunity-card">
+
+      <!-- Title -->
       <h3>{{ op.title }}</h3>
-      <p>{{ op.description || 'No description available' }}</p>
+      <p class="description">{{ op.description || 'No description available' }}</p>
+
+      <!-- ✅ New aligned details -->
+      <div class="op-details-grid">
+        <div>
+          <p><strong>Status:</strong> {{ op.status || 'N/A' }}</p>
+          <p><strong>Duration:</strong> {{ op.duration || 'N/A' }}</p>
+        </div>
+
+        <div>
+          <p><strong>Location:</strong> {{ op.location || 'N/A' }}</p>
+          <p><strong>Skills:</strong> {{ (op.required_skills || []).join(', ') || 'N/A' }}</p>
+        </div>
+      </div>
+
+      <!-- Optional View button -->
+      <button class="btn-view" (click)="onView((op._id || op.id)?.toString())">
+        View Details
+      </button>
+
     </div>
   </div>
 
